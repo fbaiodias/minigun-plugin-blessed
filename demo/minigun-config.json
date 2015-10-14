@@ -1,0 +1,20 @@
+{
+  "config": {
+    "target": "https://google.com",
+    "phases": [
+      { "duration": 2, "arrivalRate": 10 },
+      { "duration": 6, "arrivalRate": 3 },
+      { "duration": 10, "arrivalRate": 2 }
+    ],
+    "plugins": {
+      "blessed": {}
+    }
+  },
+  "scenarios": [
+      {
+        "flow": [
+          { "get": { "url": "/" }}
+        ]
+      }
+    ]
+  }
