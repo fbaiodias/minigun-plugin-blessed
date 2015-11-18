@@ -5,20 +5,19 @@
   "main": "lib/index.js",
   "scripts": {
     "clean": "rimraf lib",
-    "demo": "npm run build && minigun run demo/minigun-config.json -q",
     "babel": "babel ./src --out-dir ./lib",
-    "build": "npm run clean && npm run babel"
+    "build": "npm run clean && npm run babel",
+    "prepublish": "npm run build"
   },
   "author": "Francisco Dias <francisco@baiodias.com> (http://franciscodias.net/)",
   "license": "ISC",
   "dependencies": {
     "blessed": "^0.1.81",
     "react": "^0.14.0",
-    "react-blessed": "^0.1.4"
+    "react-blessed": "^0.1.7"
   },
   "devDependencies": {
     "babel": "^5.8.23",
-    "minigun": "^0.2.3",
     "rimraf": "^2.4.3",
     "snazzy": "^2.0.1",
     "standard": "^5.3.1"
