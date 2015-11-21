@@ -1,6 +1,7 @@
-import React, { Component } from 'react'
+import React, { Component, PropTypes } from 'react'
 import Logger from './logger'
 import ProgressBar from './progress-bar'
+import LineChart from './line-chart'
 
 const logo =
 `           _       _
@@ -11,7 +12,7 @@ const logo =
                      |___/
 `
 
-export default class App extends Component {
+class App extends Component {
   constructor (props) {
     super(props)
 
@@ -33,6 +34,7 @@ export default class App extends Component {
 
     props.minigun.on('stats', (data) => {
       this.refs.logger.logStats(data)
+      this.refs.chart.logStats(data)
     })
 
     props.minigun.on('done', (data) => {
@@ -56,7 +58,19 @@ export default class App extends Component {
           {logo}
         </box>
 
-        <Logger ref='logger' />
+        <LineChart
+          ref='chart'
+          height='25%'
+          top='25%'
+        />
+
+        <Logger
+          ref='logger'
+          left='0%'
+          width='100%'
+          height='25%'
+          top='75%'
+        />
 
         {
           currentPhase ? <ProgressBar phase={currentPhase} /> : undefined
@@ -65,3 +79,9 @@ export default class App extends Component {
     )
   }
 }
+
+App.propTypes = {
+  minigun: PropTypes.object
+}
+
+export default App

@@ -28,17 +28,15 @@ ${JSON.stringify(data, null, 2)}`
       <element ref='logger'
         label={'Stats'}
         tags
-        left='0%'
-        width='100%'
-        height='75%'
-        top='25%'
         mouse
         keys
         scrollable
         scrollOnInput
         scrollback={Infinity}
         border={{type: 'line'}}
-        style={{border: {fg: 'white'}}}/>
+        style={{border: {fg: 'white'}}}
+        {...this.props}
+      />
     )
   }
 }
