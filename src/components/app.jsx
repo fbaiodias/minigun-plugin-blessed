@@ -1,17 +1,9 @@
 import React, { Component, PropTypes } from 'react'
+import Logo from './logo'
 import Logger from './logger'
 import ProgressBar from './progress-bar'
 import StatusCodesChart from './charts/status-codes'
 import LatencyChart from './charts/latency'
-
-const logo =
-`           _       _
- _ __ ___ (_)_ __ (_) __ _ _   _ _ __
-| '_ \` _ \\| | '_ \\| |/ _\` | | | | '_ \\
-| | | | | | | | | | | (_| | |_| | | | |
-|_| |_| |_|_|_| |_|_|\\__, |\\__,_|_| |_|
-                     |___/
-`
 
 class App extends Component {
   constructor (props) {
@@ -56,16 +48,12 @@ class App extends Component {
 
     return (
       <box>
-        <box
-          draggable
-          ref='logo'
+        <Logo
           left='20%'
           width='60%'
           height='15%'
           top='0%'
-          style={{border: {fg: 'blue'}}}>
-          {logo}
-        </box>
+        />
 
         <StatusCodesChart
           ref='statusCodesChart'
