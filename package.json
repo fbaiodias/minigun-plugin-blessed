@@ -4,6 +4,8 @@
   "description": "",
   "main": "lib/index.js",
   "scripts": {
+    "start": "npm run demo",
+    "demo": "babel-node demo",
     "lint": "standard --verbose | snazzy",
     "clean": "rimraf lib",
     "babel": "babel ./src --out-dir ./lib",
