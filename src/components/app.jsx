@@ -1,7 +1,8 @@
 import React, { Component, PropTypes } from 'react'
 import Logger from './logger'
 import ProgressBar from './progress-bar'
-import LineChart from './line-chart'
+import StatusCodesChart from './charts/status-codes'
+import LatencyChart from './charts/latency'
 
 const logo =
 `           _       _
@@ -34,7 +35,8 @@ class App extends Component {
 
     props.minigun.on('stats', (data) => {
       this.refs.logger.logStats(data)
-      this.refs.chart.logStats(data)
+      this.refs.statusCodesChart.logStats(data)
+      this.refs.latencyChart.logStats(data)
     })
 
     props.minigun.on('done', (data) => {
@@ -65,10 +67,16 @@ class App extends Component {
           {logo}
         </box>
 
-        <LineChart
-          ref='chart'
-          height='50%'
+        <StatusCodesChart
+          ref='statusCodesChart'
+          height='25%'
           top='25%'
+        />
+
+        <LatencyChart
+          ref='latencyChart'
+          height='25%'
+          top='50%'
         />
 
         <Logger

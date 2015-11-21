@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-export default class LineChart extends Component {
+export default class StatusCodesChart extends Component {
   constructor (props) {
     super(props)
 

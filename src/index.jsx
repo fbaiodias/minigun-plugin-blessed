@@ -16,14 +16,6 @@ function BlessedPlugin (config, ee) {
 
   this.component = render(<App config={config} minigun={ee} screen={screen} />, screen)
 
-  ee.on('stats', (stats) => {
-    // console.log('stats', stats)
-  })
-
-  ee.on('done', (stats) => {
-    // console.log('done', stats)
-  })
-
   return this
 }
 
