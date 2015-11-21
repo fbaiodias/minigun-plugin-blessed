@@ -26,5 +26,5 @@ npm run build # builds `src` into `lib`
 
 # if you `npm link` and have minigun installed globally,
 # you can try it out with the demo config:
-minigun demo/minigun-config.json
+minigun run demo/minigun-config.json -q
 ```
