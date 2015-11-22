@@ -5,7 +5,9 @@
   "main": "lib/index.js",
   "scripts": {
     "start": "npm run demo",
-    "demo": "babel-node demo",
+    "demo": "NODE_ENV=development babel-node demo",
+    "demo:watch": "nodemon --ext js,jsx --quiet --exec babel-node demo",
+    "demo:logs": "tail -f demo.log | bunyan -o short",
     "lint": "standard --verbose | snazzy",
     "clean": "rimraf lib",
     "babel": "babel ./src --out-dir ./lib",
@@ -16,11 +18,16 @@
   "license": "ISC",
   "dependencies": {
     "blessed": "^0.1.81",
+    "bunyan": "^1.5.1",
     "react": "^0.14.0",
-    "react-blessed": "github:xicombd/react-blessed"
+    "react-blessed": "github:xicombd/react-blessed",
+    "react-redux": "^4.0.0",
+    "redux": "^3.0.4",
+    "redux-actions": "^0.8.0"
   },
   "devDependencies": {
     "babel": "^5.8.23",
+    "pre-commit": "^1.1.2",
     "rimraf": "^2.4.3",
     "snazzy": "^2.0.1",
     "standard": "^5.3.1"

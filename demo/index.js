@@ -49,8 +49,6 @@ const getRandomStats = () => {
   }
 }
 
-setInterval(() => ee.emit('stats', getRandomStats()), 2000)
-
 let phase = 0
 
 const announcePhase = () => {

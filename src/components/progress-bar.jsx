@@ -37,19 +37,17 @@ export default class ProgressBar extends Component {
     const { phase } = this.props
 
     const style = completed
-      ? {border: {fg: 'white'}, bar: {bg: 'green'}}
-      : {border: {fg: 'white'}, bar: {bg: 'red'}}
+      ? {bar: {bg: 'green'}}
+      : {bar: {bg: 'red'}}
 
     return (
       <progressbar orientation='horizontal'
         filled={this.state.completion}
-        top='15%'
-        left='center'
-        height='10%'
-        width='80%'
         label={`Phase ${phase.index} Progress (${phase.duration}s)`}
         border={{type: 'line'}}
-        style={style} />
+        style={style}
+        {...this.props}
+      />
     )
   }
 }
