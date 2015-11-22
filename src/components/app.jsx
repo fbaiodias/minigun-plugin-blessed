@@ -34,13 +34,6 @@ class App extends Component {
     props.minigun.on('done', (data) => {
       this.refs.logger.logDone(data)
     })
-
-    props.screen.on('resize', function () {
-      this.setState({
-        width: props.screen.width,
-        height: props.screen.height
-      })
-    })
   }
 
   render () {
@@ -84,8 +77,7 @@ class App extends Component {
 }
 
 App.propTypes = {
-  minigun: PropTypes.object,
-  screen: PropTypes.object
+  minigun: PropTypes.object
 }
 
 export default App
