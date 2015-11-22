@@ -1,9 +1,11 @@
 import { combineReducers, createStore, applyMiddleware } from 'redux'
 import minigun from './minigun'
+import screen from './screen'
 import createLogger from '../middlewares/logger'
 
 const reducer = combineReducers({
-  minigun
+  minigun,
+  screen
 })
 
 export default function configureStore (initialState = {}) {

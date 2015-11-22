@@ -4,6 +4,7 @@ import { render } from 'react-blessed'
 import App from './components/app'
 import configureStore from './reducers'
 import logger from './logger'
+import { resize } from './actions/screen'
 import {
   stats,
   phaseStarted,
@@ -26,6 +27,12 @@ function BlessedPlugin (config, ee) {
     logger.info('exiting')
     return process.exit(0)
   })
+
+  screen.on('resize', (data) => {
+    store.dispatch(resize({ width: screen.width, height: screen.height }))
+  })
+
+  store.dispatch(resize({ width: screen.width, height: screen.height }))
 
   ee.on('stats', (data) => {
     store.dispatch(stats(data))
