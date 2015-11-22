@@ -4,6 +4,9 @@
   "description": "",
   "main": "lib/index.js",
   "scripts": {
+    "start": "npm run demo",
+    "demo": "babel-node demo",
+    "lint": "standard --verbose | snazzy",
     "clean": "rimraf lib",
     "babel": "babel ./src --out-dir ./lib",
     "build": "npm run clean && npm run babel",
@@ -14,12 +17,15 @@
   "dependencies": {
     "blessed": "^0.1.81",
     "react": "^0.14.0",
-    "react-blessed": "^0.1.7"
+    "react-blessed": "github:xicombd/react-blessed"
   },
   "devDependencies": {
     "babel": "^5.8.23",
     "rimraf": "^2.4.3",
     "snazzy": "^2.0.1",
     "standard": "^5.3.1"
-  }
+  },
+  "pre-commit": [
+    "lint"
+  ]
 }
