@@ -11,7 +11,6 @@ class App extends Component {
       currentPhase,
       codes,
       latency,
-      width,
       height
     } = this.props
 
