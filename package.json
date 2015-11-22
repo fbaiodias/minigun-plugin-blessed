@@ -5,7 +5,7 @@
   "main": "lib/index.js",
   "scripts": {
     "start": "npm run demo",
-    "demo": "babel-node demo",
+    "demo": "NODE_ENV=development babel-node demo",
     "demo:watch": "nodemon --ext js,jsx --quiet --exec babel-node demo",
     "demo:logs": "tail -f demo.log | bunyan -o short",
     "lint": "standard --verbose | snazzy",
