@@ -5,7 +5,8 @@
   "main": "lib/index.js",
   "scripts": {
     "start": "npm run demo",
-    "demo": "nodemon --exec babel-node demo",
+    "demo": "babel-node demo",
+    "demo:watch": "nodemon --ext js,jsx --quiet --exec babel-node demo",
     "demo:logs": "tail -f demo.log | bunyan -o short",
     "lint": "standard --verbose | snazzy",
     "clean": "rimraf lib",

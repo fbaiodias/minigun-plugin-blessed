@@ -1,4 +1,5 @@
 import React, { Component, PropTypes } from 'react'
+import { connect } from 'react-redux'
 import Logo from './logo'
 import Logger from './logger'
 import ProgressBar from './progress-bar'
@@ -6,38 +7,22 @@ import StatusCodesChart from './charts/status-codes'
 import LatencyChart from './charts/latency'
 
 class App extends Component {
-  constructor (props) {
-    super(props)
-
-    this.state = {
-      stats: []
-    }
-
-    props.minigun.on('phaseStarted', (data) => {
-      this.setState({
-        currentPhase: data
-      })
-
-      this.refs.logger.logPhaseStarted(data)
-    })
-
-    props.minigun.on('phaseCompleted', (data) => {
-      this.refs.logger.logPhaseCompleted(data)
-    })
-
-    props.minigun.on('stats', (data) => {
-      this.refs.logger.logStats(data)
-      this.refs.statusCodesChart.logStats(data)
-      this.refs.latencyChart.logStats(data)
-    })
-
-    props.minigun.on('done', (data) => {
-      this.refs.logger.logDone(data)
-    })
-  }
-
   render () {
-    const { currentPhase } = this.state
+    const {
+      currentPhase,
+      codes,
+      latency
+    } = this.props
+
+    const progressBar = currentPhase ? (
+      <ProgressBar
+        phase={currentPhase}
+        top='15%'
+        left='center'
+        height='10%'
+        width='80%'
+      />
+  ) : null
 
     return (
       <box>
@@ -48,36 +33,40 @@ class App extends Component {
           top='0%'
         />
 
+        {progressBar}
+
         <StatusCodesChart
           ref='statusCodesChart'
           height='25%'
           top='25%'
+          codes={codes}
         />
 
         <LatencyChart
           ref='latencyChart'
           height='25%'
           top='50%'
+          latency={latency}
         />
-
-        <Logger
-          ref='logger'
-          left='0%'
-          width='100%'
-          height='25%'
-          top='75%'
-        />
-
-        {
-          currentPhase ? <ProgressBar phase={currentPhase} /> : undefined
-        }
       </box>
     )
   }
 }
 
 App.propTypes = {
-  minigun: PropTypes.object
+  minigun: PropTypes.object,
+  currentPhase: PropTypes.object,
+  latency: PropTypes.object,
+  codes: PropTypes.object
 }
 
-export default App
+function mapStateToProps ({ minigun }) {
+  return {
+    stats: minigun.stats,
+    currentPhase: minigun.currentPhase,
+    latency: minigun.latency,
+    codes: minigun.codes
+  }
+}
+
+export default connect(mapStateToProps)(App)
